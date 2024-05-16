@@ -25,7 +25,7 @@
                 <div class="mb-3 row">
                     <label for="sinopsis" class="col-sm-2 col-form-label">Sinopsis</label>
                     <div class="col-sm-10">
-                        <textarea class="form-control" name="sinopsis" id="sinopsis" value="{{ old('sinopsis') }}" rows="5"></textarea>
+                        <textarea class="form-control" name="sinopsis" id="sinopsis" rows="5"> {{ old('sinopsis') }}"</textarea>
                     </div>
                 </div>
                 <div class="mb-3 row">
@@ -55,7 +55,13 @@
                 <div class="mb-3 row">
                     <label for="tahun_rilis" class="col-sm-2 col-form-label">Tahun Rilis</label>
                     <div class="col-sm-10">
-                        <input type="number" class="form-control" name='tahun_rilis' value="{{ old('tahun_rilis') }}" id="tahun_rilis">
+                        <input type="text" class="form-control" name='tahun_rilis' value="{{ old('tahun_rilis') }}" id="tahun_rilis">
+                    </div>
+                </div>
+                <div class="mb-3 row">
+                    <label for="link" class="col-sm-2 col-form-label">Link</label>
+                    <div class="col-sm-10">
+                        <input type="text" class="form-control" name='link' value="{{ old('link') }}" id="link">
                     </div>
                 </div>
                 <div class="mb-3 row">
@@ -85,12 +91,13 @@
                         <thead>
                             <tr>
                                 <th class="col-md-2">Judul</th>
-                                <th class="col-md-4">Sinopsis</th>
+                                <th class="col-md-5">Sinopsis</th>
                                 <th class="col-md-2">Foto</th>
                                 <th class="col-md-2">rating</th>
                                 <th class="col-md-2">Durasi</th>
-                                <th class="col-md-2">Genre</th>
+                                <th class="col-md-1">Genre</th>
                                 <th class="col-md-2">Tahun Rilis</th>
+                                <th class="col-md-2">Link</th>
                                 <th class="col-md-2">Aksi</th>
                             </tr>
                         </thead>
@@ -104,14 +111,18 @@
                                     <td>{{ $film->durasi }}</td>
                                     <td>{{ $film->genre }}</td>
                                     <td>{{ $film->tahun_rilis }}</td>
+                                    <td>{{ $film->link }}</td>
                                     <td>
-                                        <div class="d-flex">
-                                            <a href="{{ route('film.edit', $film->id) }}" class="btn btn-warning btn-sm me-2">Edit</a>
-                                        <form id="delete-form-{{ $film->id }}" action="{{ route('film.destroy', $film->id) }}" method="POST">
-                                            @csrf
-                                            @method('DELETE')
-                                            <button type="button" class="btn btn-danger btn-sm" onclick="confirmDelete('{{ $film->id }}')">Delete</button>
-                                        </form>
+                                        <div class="d-flex flex-column">
+                                            <a href="{{ route('film.edit', $film->id) }}" class="btn btn-warning btn-sm mb-2">Edit</a>
+                                            <form id="delete-form-{{ $film->id }}" action="{{ route('film.destroy', $film->id) }}" method="POST">
+                                                @csrf
+                                                @method('DELETE')
+                                                <button type="button" class="btn btn-danger btn-sm mb-2" onclick="confirmDelete('{{ $film->id }}')">Delete</button>
+                                            </form>
+                                        </div>
+
+
                                     </td>
                                 </tr>
                             @endforeach

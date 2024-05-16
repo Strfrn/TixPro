@@ -14,7 +14,6 @@
     <nav>
       <ul>
         <li><a href="Home.html">Home</a></li>
-        <li><a href="#">Movies</a></li>
         <li><a href="#">Theaters</a></li>
         <li><a href="Contact Us.html">Contact Us</a></li>
       </ul>
@@ -35,27 +34,22 @@
     <section class="movies-list">
       <!-- Mulai Looping Kartu -->
       <?php
-      // Misalkan $films adalah array yang berisi data film
-
-
       foreach ($films as $film) {
       ?>
       <div class="card">
-        <img src="{{ asset('img/poster/' . $film->foto) }}" alt="{{ $film->title }}">
-        <div class="info">
-          <h2>{{ $film->judul }}</h2>
-          <p>{{ $film->durasi }} menit</p>
-          <p>{{ $film->genre }}</p>
-          <div class="rating">
-            <i class="fas fa-star"></i><span>{{ $film->rating }}</span>
+          <img src="{{ asset('img/poster/' . $film->foto) }}" alt="{{ $film->title }}">
+          <div class="info">
+              <h2>{{ $film->judul }}</h2>
+              <p>{{ $film->durasi }} menit</p>
+              <p>{{ $film->genre }}</p>
+              <div class="buttons">
+                  <a href="{{ route('beli-tiket', ['id' => $film->id]) }}"><button class="stream-btn">Beli Tiket</button></a>
+                  <span class="rating"><i class="fas fa-star"></i> {{ number_format($film->rating, 1) }}</span>
+                  <div class="buttons">
+                </div>
+              </div>
           </div>
-          <div class="buttons">
-            <button class="stream-btn">Beli Tiket</button>
-            <button class="trailer-btn" onclick="openTrailer('{{ 'trailer_' . strtolower(str_replace(" ", "_", $film->title)) }}')">Watch Trailer</button>
-          </div>
-        </div>
       </div>
-
       <?php
       }
       ?>

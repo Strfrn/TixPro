@@ -10,6 +10,19 @@ use Illuminate\Support\Facades\Session;
 
 class FilmController extends Controller
 {
+
+public function BeliTiket($id)
+{
+    $film = Film::find($id);
+
+    if (!$film) {
+        abort(404); // Jika film tidak ditemukan, kembalikan halaman 404
+    }
+
+    return view('user.belitiket', ['film' => $film]);
+}
+
+
     /**
      * Display a listing of the resource.
      */
@@ -40,6 +53,7 @@ class FilmController extends Controller
         'durasi' => 'required|integer',
         'genre' => 'required|string',
         'tahun_rilis' => 'required|integer',
+        'link' => 'required',
     ]);
 
     if ($validator->fails()) {
@@ -72,6 +86,7 @@ class FilmController extends Controller
     $film->durasi = $request->durasi;
     $film->genre = $request->genre;
     $film->tahun_rilis = $request->tahun_rilis;
+    $film->link = $request->link;
     $film->save();
 
     return redirect()->route('film.index')->with('success', 'Film berhasil disimpan');
@@ -111,6 +126,7 @@ class FilmController extends Controller
             'durasi' => 'required|integer',
             'genre' => 'required|string',
             'tahun_rilis' => 'required|integer',
+            'link' => 'required'
         ]);
 
         if ($validator->fails()) {
@@ -140,6 +156,7 @@ class FilmController extends Controller
         $film->durasi = $request->durasi;
         $film->genre = $request->genre;
         $film->tahun_rilis = $request->tahun_rilis;
+        $film->link = $request->link;
         $film->save();
 
         return redirect()->route('film.index')->with('success', 'Film berhasil diperbarui');

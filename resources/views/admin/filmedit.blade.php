@@ -60,6 +60,12 @@
                 </div>
             </div>
             <div class="mb-3 row">
+                <label for="link" class="col-sm-2 col-form-label">Link</label>
+                <div class="col-sm-10">
+                    <input type="text" class="form-control" name='link' value="{{ $film->link }}" id="link">
+                </div>
+            </div>
+            <div class="mb-3 row">
                 <label for="jurusan" class="col-sm-2 col-form-label"></label>
                 <div class="col-sm-10"><button type="submit" class="btn btn-primary" name="submit">UPDATE</button></div>
             </div>

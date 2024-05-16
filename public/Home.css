@@ -170,7 +170,8 @@ nav ul li a:hover {
 
 .card img {
     width: 100%;
-    height: auto;
+    height: 100%;
+    object-fit: cover;
     border-top-left-radius: 8px;
     border-top-right-radius: 8px;
 }
@@ -191,13 +192,13 @@ nav ul li a:hover {
     margin-top: 10px;
     display: flex;
     align-items: center;
+    color: #f39c12;
 }
 
 .rating span {
     margin-left: 5px;
     color: #f39c12;
 }
-
 
 .buttons {
     margin-top: 10px;

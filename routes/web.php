@@ -22,12 +22,6 @@ Route::get('/', function () {
     return redirect()->route('login');
 });
 
-//film
-/* Route::get('film', [FilmController::class, 'index'])->name('film.index');
-Route::post('film', [FilmController::class, 'store'])->name('film.post');
-Route::get('film/{id}', [FilmController::class, 'edit'])->name('film.edit');
-Route::put('film/{id}', [FilmController::class, 'update'])->name('film.update');
-Route::delete('film/{id}', [FilmController::class, 'destroy'])->name('film.delete'); */
 Route::resource('film', FilmController::class)->names([
     'index' => 'film.index',
     'store' => 'film.store',
@@ -56,3 +50,7 @@ Route::get('home', [HomeController::class, 'index'])->name('home');
 Route::get('user-login', [UserController::class, 'index'])->name('user-login');
 Route::post('user-proses', [UserController::class, 'user_proses'])->name('user-proses');
 Route::get('user-home', [UserController::class, 'indexx'])->name('user-home');
+
+Route::get('tiket/{id}', [FilmController::class, 'BeliTiket'])->name('beli-tiket');
+
+
