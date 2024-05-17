@@ -11,13 +11,24 @@ use Illuminate\Support\Facades\Session;
 class FilmController extends Controller
 {
 
+    public function search(Request $request)
+    {
+        $keyword = $request->input('katakunci');
+        $films = Film::where('judul', 'like', "%$keyword%")
+                     ->orWhere('sinopsis', 'like', "%$keyword%")
+                     ->orWhere('genre', 'like', "%$keyword%")
+                     ->get();
+        return view('admin.film', compact('films'));
+    }
+
+
 public function BeliTiket($id)
 {
-    $film = Film::find($id);
+    $film = Film::findOrFail($id);
 
-    if (!$film) {
-        abort(404); // Jika film tidak ditemukan, kembalikan halaman 404
-    }
+    $films = Film::all();
+
+    return view('user.belitiket', compact('film', 'films'));
 
     return view('user.belitiket', ['film' => $film]);
 }

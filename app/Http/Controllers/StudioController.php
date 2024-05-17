@@ -18,6 +18,15 @@ class StudioController extends Controller
         return view('admin.studio',compact('studios'));
     }
 
+    public function search(Request $request)
+    {
+        $keyword = $request->input('katakunci');
+        $studios = Studio::where('nama','like',"%$keyword%")
+                         ->orWhere('lokasi','like',"%$keyword%")
+                         ->get();
+                    return view('admin.studio', compact('studios'));
+    }
+
     /**
      * Show the form for creating a new resource.
      */

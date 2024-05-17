@@ -29,6 +29,8 @@ Route::resource('film', FilmController::class)->names([
     'update' => 'film.update',
     'destroy' => 'film.destroy',
 ]);
+Route::get('film.search', [FilmController::class, 'search'])->name('film.search');
+
 //studio
 Route::resource('studio', StudioController::class)->names([
     'index' => 'studio.index',
@@ -37,6 +39,7 @@ Route::resource('studio', StudioController::class)->names([
     'update' => 'studio.update',
     'destroy' => 'studio.destroy',
 ]);
+Route::get('studio.search', [StudioController::class, 'search'])->name('studio.search');
 
 
 Route::get('login', [LoginController::class, 'index'])->name('login');

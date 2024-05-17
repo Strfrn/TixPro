@@ -189,17 +189,18 @@ nav ul li a:hover {
     flex: 1;
 }
 .rating {
-    margin-top: 10px;
-    display: flex;
+    display: inline-flex;
+    background-color: #f0f0f0;
+    padding: 5px 10px;
+    border-radius: 5px;
+    color: #f39c12;
+    font-size: 1rem;
     align-items: center;
-    color: #f39c12;
 }
 
-.rating span {
+.rating i {
     margin-left: 5px;
-    color: #f39c12;
 }
-
 .buttons {
     margin-top: 10px;
     display: flex;
@@ -210,7 +211,7 @@ nav ul li a:hover {
 /* Untuk mengatur layout kartu */
 @media (min-width: 600px) {
     .card {
-        width: calc(25% - 40px); /* Sesuaikan nilai width dengan margin */
+        width: calc(25% - 40px);
     }
 }
 

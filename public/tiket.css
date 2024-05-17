@@ -1,14 +1,18 @@
 body, html {
     margin: 0;
     padding: 0;
-    width: 100%;
-    height: 100%;
+    font-family: Arial, sans-serif;
+}
+
+.container {
+    display: flex;
+    flex-direction: row;
+    height: 100vh;
 }
 
 .trailer {
+    flex: 1;
     position: relative;
-    width: 100%;
-    height: 80vh; /* 80% of viewport height */
 }
 
 .trailer iframe {
@@ -20,3 +24,66 @@ body, html {
     border: none;
 }
 
+aside {
+    width: 300px;
+    overflow-y: auto;
+    background-color: #f8f9fa;
+    padding: 10px;
+}
+
+.card {
+    margin-bottom: 15px;
+    background-color: #fff;
+    box-shadow: 0 4px 8px rgba(0,0,0,0.1);
+    border-radius: 5px;
+    overflow: hidden;
+}
+
+.card img {
+    width: 100%;
+    height: auto;
+}
+
+.info {
+    padding: 10px;
+}
+
+.info h2 {
+    margin: 0;
+    font-size: 1.2rem;
+}
+
+.info p {
+    margin: 5px 0;
+    color: #555;
+}
+
+.buttons {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    margin-top: 10px;
+}
+
+.stream-btn {
+    padding: 8px 16px;
+    background-color: #007bff;
+    color: #fff;
+    border: none;
+    border-radius: 5px;
+    cursor: pointer;
+    transition: background-color 0.3s;
+}
+
+.stream-btn:hover {
+    background-color: #0056b3;
+}
+
+.rating {
+    display: inline-block;
+    background-color: #f0f0f0;
+    padding: 5px 10px;
+    border-radius: 5px;
+    color: #f39c12;
+    font-size: 1rem;
+}
